@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>American Transfers Cancun {% if block('title') %} - {% block title %}{% endblock %}{% endif %}</title>
+    <link href="/css/main.css" media="screen" type="text/css" rel="stylesheet">
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <!-- _dd5gYnZmHyFO3xsBMiwjDq2s2k -->
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <meta name="description" content="{% block meta_description %}{% endblock %}
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/jquery-ui.js"></script>
+    <script type="text/javascript">var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-39338512-1']);_gaq.push(['_trackPageview']);(function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>
+</head>
+<body>
+
+<div id="wrapper">
+    <table cellpadding="0" cellspacing="0" id="layout-table">
+        <tr>
+            <td style="height: 130px; background: transparent url(/images/atc-header-background.jpg) no-repeat top left;" valign="bottom">{{ include('::header.html.twig') }}</td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <table cellpadding="0" cellspacing="0" style="height: 100%;">
+                    <tr>
+                        <td id="menu">{{ include('::menu.html.twig') }}<br /><br />
+                            <div style="text-align:center;"><img src="/images/secureSiteLogo.png"  alt="" border="0" /></div>
+                        </td>
+                        <td id="content"><div id="content-box">{% block body %}{% endblock %}</div></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="height: 30px;">{{ include('::footer.html.twig') }}</td>
+        </tr>
+    </table>
+</div>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

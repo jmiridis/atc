@@ -1,0 +1,108 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Contact Us{% endblock %}
+{% block meta_description %}Please contact us if you have any question about your current reservation or would like to know more about our transportation offers.{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function submitForm(e) {
+            e.disabled=true;
+            e.form.submit();
+            return false;
+        }
+
+        $(function() {
+
+            $.fn.emailencode = function(options) {
+                var settings = jQuery.extend({
+                    atsign: "#"
+                }, options);
+
+                return this.each(function() {
+                    var address = $(this).attr("href");
+
+                    var formatedAddress = address.replace(settings.atsign, "@");
+                    if($(this).html() == address)
+                    {
+                        $(this).html(formatedAddress)
+                    }
+                    $(this).attr("href", "mailto:" + formatedAddress);
+                });
+            };
+
+            $('.mailto').emailencode();
+
+            jQuery.support.borderRadius = false;
+            jQuery.each(['BorderRadius','MozBorderRadius','WebkitBorderRadius','OBorderRadius','KhtmlBorderRadius'], function() {
+                if(document.body.style[this] !== undefined) jQuery.support.borderRadius = true;
+                return (!jQuery.support.borderRadius);
+            });
+
+            if(!$.support.borderRadius) {
+                $('.button').each(function() {
+                    $(this).wrap('<div class="buttonwrap"></div>')
+                            .before('<div class="corner tl"></div><div class="corner tr"></div>')
+                            .after('<div class="corner bl"></div><div class="corner br"></div>');
+                });
+            }
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="page_title">Contact Us</div>
+
+    <div class="text-box">Please choose among the following options to contact us:  </div>
+
+    <div class="section-box-half">
+        <div class="section-title">Postal Address / Phone / Email</div>
+        <table class="styled" cellpadding="0" cellspacing="0">
+            <tbody>
+            <tr>
+                <th>Address</th>
+                <td class="data">Av. Cumbres #15, SM 311, MZ 22<br />Col. Alamos, CP 77560 Cancun<br />Quintana Roo, Mexico</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td class="data">+52 (998) 214-5918 or +52 (998) 201-1720</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td class="data"><a class="mailto" href="contact#americantransferscancun.com">contact#americantransferscancun.com</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    {{ form_start(form) }}
+    <div class="section-box">
+        <div class="section-title">Contact Form</div>
+
+        {{ form_errors(form) }}
+        <table class="styled" cellpadding="0" cellspacing="0" width="100%">
+            <tbody>
+            <tr>
+                <th nowrap style="width: 5%">Your e-mail</th>
+                <td class="field">
+                    {{ form_errors(form.emailAddress) }}{{ form_widget(form.emailAddress, {attr:{style:'width: 99%'}}) }}
+                </td>
+            </tr>
+            <tr>
+                <th nowrap>Your Message</th>
+                <td class="field">
+                    {{ form_errors(form.message) }}{{ form_widget(form.message, {attr:{style:'width: 99%', rows:5}}) }}
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0;"></td>
+                <td align="left" style="border:0; padding: 8px;">
+                    <input class="button" type="submit" value="Send Message" onclick="submitForm(this)" />
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}

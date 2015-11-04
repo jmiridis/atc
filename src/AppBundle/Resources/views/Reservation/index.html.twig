@@ -1,0 +1,63 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Reservation list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Uniqid</th>
+                <th>Roundtrip</th>
+                <th>Nopax</th>
+                <th>Hotel</th>
+                <th>Arrivaldate</th>
+                <th>Arrivalflightno</th>
+                <th>Departuredate</th>
+                <th>Departureflightno</th>
+                <th>Price</th>
+                <th>Comment</th>
+                <th>Status</th>
+                <th>Paymentdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('reservation_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.uniqid }}</td>
+                <td>{{ entity.roundTrip }}</td>
+                <td>{{ entity.noPax }}</td>
+                <td>{{ entity.hotel }}</td>
+                <td>{% if entity.arrivalDate %}{{ entity.arrivalDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.arrivalFlightNo }}</td>
+                <td>{% if entity.departureDate %}{{ entity.departureDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.departureFlightNo }}</td>
+                <td>{{ entity.price }}</td>
+                <td>{{ entity.comment }}</td>
+                <td>{{ entity.status }}</td>
+                <td>{% if entity.paymentDate %}{{ entity.paymentDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('reservation_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('reservation_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('reservation_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

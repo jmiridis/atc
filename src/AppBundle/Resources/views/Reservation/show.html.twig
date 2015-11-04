@@ -1,0 +1,76 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Reservation</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Uniqid</th>
+                <td>{{ entity.uniqid }}</td>
+            </tr>
+            <tr>
+                <th>Roundtrip</th>
+                <td>{{ entity.roundTrip }}</td>
+            </tr>
+            <tr>
+                <th>Nopax</th>
+                <td>{{ entity.noPax }}</td>
+            </tr>
+            <tr>
+                <th>Hotel</th>
+                <td>{{ entity.hotel }}</td>
+            </tr>
+            <tr>
+                <th>Arrivaldate</th>
+                <td>{{ entity.arrivalDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Arrivalflightno</th>
+                <td>{{ entity.arrivalFlightNo }}</td>
+            </tr>
+            <tr>
+                <th>Departuredate</th>
+                <td>{{ entity.departureDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Departureflightno</th>
+                <td>{{ entity.departureFlightNo }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ entity.price }}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ entity.comment }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ entity.status }}</td>
+            </tr>
+            <tr>
+                <th>Paymentdate</th>
+                <td>{{ entity.paymentDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('reservation') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('reservation_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

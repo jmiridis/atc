@@ -1,0 +1,11 @@
+/app/config/parameters.yml
+/.idea
+/composer.phar
+/vendor/
+/bin
+/web/bundles
+/app/cache
+/app/logs
+/app/bootstrap.php.cache
+/web/data
+/app/data

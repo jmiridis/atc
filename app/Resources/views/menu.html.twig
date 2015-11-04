@@ -1,0 +1,16 @@
+{% if app.user %}
+<div class="user-menu"><a href="{{ path('') }}">My Reservations</a></div>
+{% else %}
+<div style="height:30px;">&nbsp;</div>
+{% endif %}
+
+<ul class="menu">
+    <li class="{% if app.request.attributes.get('_route') starts with 'home' %}selected{% else %}b{% endif %}"><a href="{{ path('homepage') }}">Home</a></li>
+    <li class="{% if app.request.attributes.get('_route') starts with 'prices' %}selected{% else %}b{% endif %}"><a href="{{ path('price_index') }}">Prices</a></li>
+    <li class="{% if app.request.attributes.get('_route') starts with 'reservation' %}selected{% else %}b{% endif %}"><a href="{{ path('reservation_new') }}">Reservation</a></li>
+    <li class="{% if app.request.attributes.get('_route') starts with 'contact' %}selected{% else %}b{% endif %}"><a href="{{ path('contact_index') }}">Contact Us</a></li>
+    <li class="{% if app.request.attributes.get('_route') starts with 'faq' %}selected{% else %}b{% endif %}"><a href="{{ path('faq_index') }}">F.A.Q.</a></li>
+    {% if app.user %}
+        <li class="b"><a href="{{ path('') }}">logout</a></li>
+    {% endif %}
+</ul>

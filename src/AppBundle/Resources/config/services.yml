@@ -1,0 +1,6 @@
+services:
+    pftp.type.entity_hidden:
+        class: AppBundle\Form\Type\EntityHiddenType
+        arguments: ["@doctrine"]
+        tags:
+            - { name: form.type, alias: entity_hidden }
